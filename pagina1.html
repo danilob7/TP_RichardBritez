@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <style>
+        /* Estilo base para el body */
+        body {
+            font-family: Arial, sans-serif;
+            color: #fff; /* Color blanco para el texto */
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #32cd32); 
+        }
+
+        /* Contenedor principal */
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            font-size: 20px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Título principal */
+        h1 {
+            color: #fff;
+        }
+
+        /* Estilos para los inputs */
+        .welcome-section input {
+            padding: 10px;
+            margin: 5px;
+            font-size: 20px;
+            border: 2px solid #ccc;
+            width: 80%;
+        }
+
+        /* Botón para dar bienvenida */
+        .welcome-section button {
+            padding: 10px 20px;
+            background-color: #f0c246;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .welcome-section button:hover {
+            background-color: #d774f5;
+        }
+
+        /* Botones animados */
+        .buttons {
+            margin-top: 30px;
+        }
+
+        .animated-button {
+            background-color: #ff5722;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            margin: 10px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .animated-button:hover {
+            transform: scale(1.1);
+            background-color: #6e6bf7;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="welcome-heading">Bienvenido a la Página Principal</h1>
+
+        <!-- Mensaje de bienvenida con el nombre del usuario -->
+        <div id="greeting-message"></div>
+
+        <p>¡Hola! Esta es la página principal. Aquí podrás encontrar tres botones que te llevarán a diferentes páginas:</p>
+        <ul>
+            <li>Página 2: Galeria</li>
+            <li>Página 3: Calculadora</li>
+        </ul>
+
+        <!-- Sección para ingresar nombre y apellido -->
+        <div class="welcome-section">
+            <p>Por favor, ingresa tu nombre y apellido:</p>
+            <input type="text" id="first-name" placeholder="Tu nombre" required>
+            <input type="text" id="last-name" placeholder="Tu apellido" required>
+            <button id="submit-name">Dar Bienvenida</button>
+        </div>
+
+        <!-- Botones animados para navegar entre páginas -->
+        <div class="buttons">
+            <button class="animated-button" onclick="window.location.href='pagina2.html'">Página 2</button>
+            <button class="animated-button" onclick="window.location.href='pagina3.html'">Página 3</button>
+        </div>
+    </div>
+
+    <script>
+        // Obtener elementos del DOM
+        const submitNameButton = document.getElementById('submit-name');
+        const firstNameInput = document.getElementById('first-name');
+        const lastNameInput = document.getElementById('last-name');
+        const greetingMessage = document.getElementById('greeting-message');
+        const welcomeHeading = document.getElementById('welcome-heading');
+
+        // Evento del botón de bienvenida
+        submitNameButton.addEventListener('click', function() {
+            const firstName = firstNameInput.value.trim();
+            const lastName = lastNameInput.value.trim();
+
+            if (firstName && lastName) {
+                // Cambiar el título de bienvenida
+                welcomeHeading.textContent = `¡Bienvenido, ${firstName} ${lastName}!`;
+
+                // Mostrar el mensaje de bienvenida con el nombre completo
+                greetingMessage.innerHTML = `<h2>Hola, ${firstName} ${lastName}! Es un placer tenerte con nosotros.</h2>`;
+
+                // Limpiar los campos de entrada
+                firstNameInput.value = '';
+                lastNameInput.value = '';
+            } else {
+                // Si los campos están vacíos, mostrar una alerta
+                alert('Por favor ingresa tu nombre y apellido.');
+            }
+        });
+    </script>
+</body>
+</html>
+
